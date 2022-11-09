@@ -63,19 +63,30 @@ jobs:
       - run: ./vendor/bin/phpunit
       #- run: ./vendor/bin/codecept build
       #- run: ./vendor/bin/codecept run
-  pull-and-build:
+  deploy-main:
     docker:
       - image: arvindr226/alpine-ssh
     steps:
       - checkout
       - run: ssh -o StrictHostKeyChecking=no -v $SSH_USER@$SSH_HOST "cd /var/www/html/ && ./deploy-main.sh"
+  deploy-dev:
+    docker:
+      - image: arvindr226/alpine-ssh
+    steps:
+      - checkout
+      - run: ssh -o StrictHostKeyChecking=no -v $SSH_USER@$SSH_HOST "cd /var/www/html/ && ./deploy-dev.sh"
 
 workflows:
   version: 2
   build-project:
     jobs:
-      - pull-and-build:
+      - deploy-main:
           filters:
             branches:
               only:
                 - main
+      - deploy-dev:
+          filters:
+            branches:
+              only:
+                - dev
