@@ -2,14 +2,17 @@
 
 namespace Database\Factories;
 
+use App\Models\Account;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\User>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Account>
  */
-class UserFactory extends Factory
+class AccountFactory extends Factory
 {
+    protected $model = Account::class;
+
     /**
      * Define the model's default state.
      *
@@ -17,8 +20,12 @@ class UserFactory extends Factory
      */
     public function definition()
     {
+        $names = get_names_from_string(fake()->name());
+
         return [
-            'name' => fake()->name(),
+            'name_first' => $names[0],
+            'name_middle' => $names[1][0],
+            'name_last' => $names[2],
             'email' => fake()->unique()->safeEmail(),
             'email_verified_at' => now(),
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
