@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Interest;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -15,15 +16,6 @@ class InterestSeeder extends Seeder
      */
     public function run()
     {
-        // DB::table('interest')->insert([
-        //     array(
-        //         'title' => 'Interest 1',
-        //         'description' => 'Interest Description 1'
-        //     ),
-        //     array(
-        //         'title' => 'Interest 2',
-        //         'description' => 'Interest Description 2'
-        //     ),
-        // ]);
+        Interest::factory()->count(10)->create();
     }
 }

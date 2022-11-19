@@ -13,12 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('interest_category', function (Blueprint $table) {
+        Schema::create('interest_category_assoc', function (Blueprint $table) {
             $table->id();
-            
-            $table->string('title');
-            $table->tinytext('description');
-            $table->text('description_long');
+            $table->integer('category_id');
+            $table->integer('interest_id');
         });
     }
 
@@ -29,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('interest_category');
+        Schema::dropIfExists('interest_category_assoc');
     }
 };

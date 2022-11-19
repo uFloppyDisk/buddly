@@ -5,9 +5,9 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Interest>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\InterestCategory>
  */
-class InterestFactory extends Factory
+class InterestCategoryFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -17,7 +17,7 @@ class InterestFactory extends Factory
     public function definition()
     {
         return [
-            'title' => "Interest ".fake()->words(2, true),
+            'title' => "Interest Category ".fake()->words(2, true),
             'description' => fake()->sentence(10),
             'description_long' => fake()->text(100)
         ];

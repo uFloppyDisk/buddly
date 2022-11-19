@@ -6,6 +6,7 @@ namespace Database\Seeders;
 
 use App\Models\Account;
 use App\Models\Interest;
+use App\Models\InterestCategory;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -25,17 +26,9 @@ class DatabaseSeeder extends Seeder
         // ]);
 
         $this->call([
-            InterestSeeder::class
+            InterestSeeder::class,
+            InterestCategorySeeder::class,
+            AccountSeeder::class
         ]);
-
-        Account::factory()
-                ->has(Interest::factory()->count(2))
-                ->count(10)
-                ->create();
-
-        Account::factory()
-                ->has(Interest::factory()->count(1))
-                ->count(10)
-                ->create();
     }
 }

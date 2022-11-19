@@ -17,4 +17,8 @@ class Interest extends Model
         'description',
         'description_long',
     ];
+
+    public function categories() {
+        return $this->belongsToMany(InterestCategory::class, 'interest_category_assoc', 'interest_id', 'category_id');
+    }
 }
