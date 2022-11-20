@@ -17,9 +17,9 @@ class InterestCategoryFactory extends Factory
     public function definition()
     {
         return [
-            'title' => "Interest Category ".fake()->words(2, true),
-            'description' => fake()->sentence(10),
-            'description_long' => fake()->text(100)
+            'title' => "Category ".fake()->words(2, true),
+            'description' => fake()->realText(30),
+            'description_long' => fake()->realText(150)
         ];
     }
 }

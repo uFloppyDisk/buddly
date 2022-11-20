@@ -30,21 +30,6 @@ return new class extends Migration
             $table->rememberToken();
             $table->timestamps();
         });
-
-        // DB::table('account')->insert([
-        //     array(
-        //         'email' => 'example@buddly.ca',
-        //         'password' => Hash::make('password'),
-        //         'name_first' => 'Example',
-        //         'name_last' => 'User'
-        //     ),
-        //     array(
-        //         'email' => 'example2@buddly.ca',
-        //         'password' => Hash::make('password'),
-        //         'name_first' => 'Second Example',
-        //         'name_last' => 'User'
-        //     )
-        // ]);
     }
 
     /**

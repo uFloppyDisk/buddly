@@ -22,13 +22,21 @@ class AccountFactory extends Factory
     {
         $names = get_names_from_string(fake()->name());
 
+        $area_code = fake()->randomElement([604, 778]);
+
+        $subscriber_num = fake()->randomNumber(7);
+        $phone_number = $area_code.$subscriber_num;
+
         return [
-            'name_first' => $names[0],
-            'name_middle' => $names[1][0],
-            'name_last' => $names[2],
+            'type' => fake()->randomElement([0, 100]),
             'email' => fake()->unique()->safeEmail(),
-            'email_verified_at' => now(),
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+            'email_verified_at' => now(),
+            'phone_number' => $phone_number,
+            'name_first' => $names[0],
+            'name_last' => $names[2],
+            'name_middle' => $names[1][0],
+            'age' => fake()->numberBetween(18, 90),
             'remember_token' => Str::random(10),
         ];
     }

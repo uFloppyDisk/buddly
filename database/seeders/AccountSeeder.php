@@ -6,6 +6,8 @@ use App\Models\Account;
 use App\Models\Interest;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class AccountSeeder extends Seeder
 {
@@ -16,6 +18,14 @@ class AccountSeeder extends Seeder
      */
     public function run()
     {
+        // DB::table('account')->insert([
+        //     'type' => 255,
+        //     'email' => 'admin@buddly.ca',
+        //     'password' => Hash::make('admin'),
+        //     'name_first' => 'Admin',
+        //     'name_last' => 'User',
+        // ]);
+        
         Account::factory()
             ->count(20)
             ->create();
@@ -26,5 +36,14 @@ class AccountSeeder extends Seeder
                 $interests->random(rand(1, 4))->pluck('id')->toArray()
             );
         });
+
+        $admin_account = Account::create([
+            'type' => 255,
+            'email' => 'admin@buddly.ca',
+            'password' => Hash::make('admin'),
+            'name_first' => 'Admin',
+            'name_last' => 'User',
+        ]);
+        $admin_account->save();
     }
 }

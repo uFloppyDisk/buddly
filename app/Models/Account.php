@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Support\Str;
 
 
 class Account extends Authenticatable
@@ -30,6 +31,9 @@ class Account extends Authenticatable
         'name_last',
         'name_middle',
     ];
+
+    protected $primaryKey = 'id';
+    protected $keyType = 'string';
 
     /**
      * The model's default values for attributes.
@@ -61,6 +65,15 @@ class Account extends Authenticatable
         'updated_at' => 'datetime'
     ];
 
+
+    public static function boot() {
+        parent::boot();
+        self::creating(function ($model) {
+            if (empty($model->id)) {
+                $model->id = Str::uuid();
+            }
+        });
+    }
 
     public function interests() {
         return $this->belongsToMany(Interest::class, 'user_interest_assoc', 'user_id', 'interest_id');

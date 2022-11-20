@@ -18,8 +18,8 @@ class InterestFactory extends Factory
     {
         return [
             'title' => "Interest ".fake()->words(2, true),
-            'description' => fake()->sentence(10),
-            'description_long' => fake()->text(100)
+            'description' => fake()->realText(50),
+            'description_long' => fake()->realText(200)
         ];
     }
 }
