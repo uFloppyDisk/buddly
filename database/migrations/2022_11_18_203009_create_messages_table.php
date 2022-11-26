@@ -13,10 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('messages', function (Blueprint $table) {
+        Schema::create('message', function (Blueprint $table) {
             $table->id();
 
-            $table->uuid('conversation_id');
+            $table->integer('conversation_id');
             $table->uuid('author_id');
             $table->timestamps();
             $table->text('message');
@@ -30,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('messages');
+        Schema::dropIfExists('message');
     }
 };

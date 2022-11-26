@@ -83,4 +83,8 @@ class Account extends Authenticatable
         // TODO: Implement interest category relation
         return null;
     }
+
+    public function getNameFullAttribute() {
+        return "{$this->name_first} {$this->name_middle} {$this->name_last}";
+    }
 }

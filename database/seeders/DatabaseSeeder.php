@@ -28,7 +28,9 @@ class DatabaseSeeder extends Seeder
         $this->call([
             InterestSeeder::class,
             InterestCategorySeeder::class,
-            AccountSeeder::class
+            AccountSeeder::class,
+            ConversationSeeder::class,
+            MessageSeeder::class,
         ]);
     }
 }
