@@ -3,6 +3,10 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
+use App\Models\Account;
+use App\Models\Interest;
+use App\Models\InterestCategory;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -20,5 +24,13 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
+
+        $this->call([
+            InterestSeeder::class,
+            InterestCategorySeeder::class,
+            AccountSeeder::class,
+            ConversationSeeder::class,
+            MessageSeeder::class,
+        ]);
     }
 }
