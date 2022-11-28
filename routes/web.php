@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminPanelController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -21,3 +22,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::middleware(['admin'])->group(function () {
+    Route::get('admin', [AdminPanelController::class, 'show'])->name('admin');
+});
