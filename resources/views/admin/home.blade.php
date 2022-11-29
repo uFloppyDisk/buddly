@@ -5,6 +5,19 @@
         <div class="row justify-content-center my-2">
             <h3>Welcome, {{ Auth::user()->name_full }}</h3>
         </div>
+        <div>
+            <h2>Quick Actions</h2>
+            <div class="row">
+                <div class="col-auto">
+                    <div class="card">
+                        <div class="card-header">Maintenence</div>
+                        <div class="card-body">
+                            <a href="#" class="btn btn-primary" role="button">Turn On</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="row table-responsive">
             <h2>Recent Users</h2>
             <table class="table table-striped table-sm">
