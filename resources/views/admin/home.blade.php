@@ -40,7 +40,13 @@
                                 @endif
                             </td>
                             <td>{{ $user->email }}</td>
-                            <td>{{ $user->age }}</td>
+                            <td>
+                                @if (!is_null($user->age))
+                                    {{ $user->age }}
+                                @else
+                                    <i class="text-muted">NULL</i>
+                                @endif
+                            </td>
                         </tr>
                     @endforeach
                 </tbody>

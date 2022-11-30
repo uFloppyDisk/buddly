@@ -23,6 +23,9 @@ Auth::routes(['verify' => true]);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::middleware(['admin'])->group(function () {
-    Route::get('admin', [AdminPanelController::class, 'show'])->name('admin');
+Route::middleware(['admin'])->prefix('admin')->group(function () {
+    Route::get('/', [AdminPanelController::class, 'show'])->name('admin');
+    Route::get('/customer-overview', function () {
+        return view('admin.customer-overview');
+    })->name('admin.customer-overview');
 });
