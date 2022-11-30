@@ -1,7 +1,70 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<section class="ftco-section">
+    <div class="row justify-content-center">
+        <div class="col-md-7 col-lg-5">
+            <div class="login-wrap p-4 p-md-5">
+                <div class="d-flex">
+                    <div class="w-100">
+                        <h3 class="mb-4">Login</h3>
+                    </div>
+                </div>
+                <form method="POST" action="{{ route('login') }}" class="login-form">
+                    @csrf
+
+                    <div class="form-group">
+                        <div class="icon d-flex align-items-center justify-content-center">
+                            <span class="fa fa-envelope"></span>
+                        </div>
+                        {{-- <input type="text" class="form-control rounded-left" placeholder="Email Address" required> --}}
+                        <input id="email" type="email" class="form-control rounded-left @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" placeholder="Email Address" required autocomplete="email" autofocus>
+
+                        @error('email')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+
+                    <div class="form-group">
+                        <div class="icon d-flex align-items-center justify-content-center">
+                            <span class="fa fa-lock"></span>
+                        </div>
+                        <input id="password" type="password" class="form-control rounded-left @error('password') is-invalid @enderror" name="password" placeholder="Password" required autocomplete="current-password">
+
+                        @error('password')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+
+                    <div class="form-group d-flex align-items-center">
+                        <div class="w-100">
+                            <label class="checkbox-wrap checkbox-primary mb-0">
+                                Remember Me
+                                <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+                                <span class="checkmark"></span>
+                            </label>
+                        </div>
+                        <div class="w-100 d-flex justify-content-end">
+                            <button type="submit" class="btn btn-primary rounded submit">
+                                {{ __('Login') }}
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="form-group mt-4">
+                        @include('components.prompt-account-create-recovery')
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+{{-- <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
@@ -69,5 +132,5 @@
             </div>
         </div>
     </div>
-</div>
+</div> --}}
 @endsection
