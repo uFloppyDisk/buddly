@@ -6,9 +6,9 @@
             </div>
         </div>
         <div class="col">
-            <div class="row align-items-center">
+            <div class="row align-self-center align-items-center">
                 <div class="col-auto pe-0">
-                    <h5>{{ $user->name_full }}</h5>
+                    <h5 class="mb-0 fs-5">{{ $user->name_full }}</h5>
                 </div>
                 <div class="col-auto">
                     @if ($user->type == 100)
@@ -18,7 +18,7 @@
             </div>
             <div class="row overflow-hidden">
                 <div class="col">
-                    <p class="mb-0 text-start">{{ $profile->bio }}</p>
+                    <p class="mb-0 fs-6 text-start">{{ $profile->bio }}</p>
                 </div>
             </div>
         </div>
@@ -52,7 +52,7 @@
             </div>
         </div>
     </div>
-    <div class="row">
+    <div class="row align-items-end">
         <div class="col ms-2">
             @php
                 $max = 2;
@@ -90,6 +90,11 @@
                     @endif
                 </div>
             @endif
+        </div>
+        <div class="col-auto">
+            <a href="#">
+                View Profile
+            </a>
         </div>
     </div>
 </div>
