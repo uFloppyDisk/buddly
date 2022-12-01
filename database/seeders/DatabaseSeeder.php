@@ -32,5 +32,7 @@ class DatabaseSeeder extends Seeder
             ConversationSeeder::class,
             MessageSeeder::class,
         ]);
+
+        \App\Models\Profile::factory(15)->create();
     }
 }

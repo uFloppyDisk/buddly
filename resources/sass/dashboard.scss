@@ -1,0 +1,17 @@
+@use 'app' as base;
+
+@mixin standard-nav {
+    color: #333;
+}
+
+.sidebar .nav-link {
+    @include standard-nav();
+
+    font-weight: 500;
+}
+
+.sidebar .nav-link.active {
+    @include standard-nav();
+
+    color: base.$primary;
+}
