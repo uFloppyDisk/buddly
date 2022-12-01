@@ -21,3 +21,11 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('chat/chat-room', function () {
+    return view('chat.chat-room');
+});
+
+Route::get('test', function () {
+    return view('test');
+});
