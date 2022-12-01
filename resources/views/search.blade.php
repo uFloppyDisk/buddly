@@ -120,10 +120,18 @@
                             @if (is_null($user->email_verified_at))
                                 @continue
                             @endif
+
+                            @php
+                                $profile = $user->profile;
+                            @endphp
+                            @if (is_null($profile))
+                                @continue
+                            @endif
+                            
                             @php
                                 $interests = $user->interests;
                             @endphp
-                            <x-user-card :user="$user" :interests="$interests"/>
+                            <x-user-card :user="$user" :profile="$profile" :interests="$interests"/>
                         @endforeach
                     </div>
                 </div>

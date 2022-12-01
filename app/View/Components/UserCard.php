@@ -7,7 +7,7 @@ use Illuminate\View\Component;
 class UserCard extends Component
 {
     public $user;
-
+    public $profile;
     public $interests;
 
     /**
@@ -15,9 +15,10 @@ class UserCard extends Component
      *
      * @return void
      */
-    public function __construct($user, $interests = [])
+    public function __construct($user, $profile = null, $interests = [])
     {
         $this->user = $user;
+        $this->profile = $profile;
         $this->interests = $interests;
     }
 

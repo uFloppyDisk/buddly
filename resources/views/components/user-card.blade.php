@@ -18,20 +18,38 @@
             </div>
             <div class="row overflow-hidden">
                 <div class="col">
-                    {{-- TODO: Add user bio --}}
-                    <p class="text-start">{{ fake()->paragraph() }}</p>
+                    <p class="mb-0 text-start">{{ $profile->bio }}</p>
                 </div>
             </div>
         </div>
-        <div class="col-auto align-self-start">
-            @if (!is_null($user->age))
-                {{ $user->age }}
+        <div class="col-auto px-1 align-self-start">
+            @if (!is_null($profile->birthdate))
+                @php
+                    $birthdate = date_create($profile->birthdate);
+                    $today = date_create(date('Y-m-d', time()));
+                @endphp
+                {{ date_diff($birthdate, $today)->format('%y') }}
             @else
                 {{ __('?')}}
             @endif
         </div>
-        <div class="col-auto align-self-start">
-            {{-- TODO: Add gender expression icon --}}
+        <div class="col-auto px-1 align-self-start">
+            <div class="icon d-flex pt-2 align-items-center justify-content-center">
+            @switch($profile->gender)
+                @case(0)
+                    <span class="fa-solid fa-mars"></span>
+                    @break
+                @case(1)
+                    <span class="fa-solid fa-venus"></span>
+                    @break
+                @case(2)
+                    <span class="fa-solid fa-transgender"></span>
+                    @break
+            
+                @default
+                    <span class="fa-solid fa-genderless"></span>
+            @endswitch
+            </div>
         </div>
     </div>
     <div class="row">
@@ -41,7 +59,7 @@
                 $count = count($interests);
             @endphp
             @if ($count > 0)
-                <div class="row mt-2">
+                <div class="row">
                     <div class="col"><span class="fst-italic text-muted">Interested in:</span></div>
                 </div>
                 <div class="row">

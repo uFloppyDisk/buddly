@@ -75,6 +75,10 @@ class Account extends Authenticatable implements MustVerifyEmail
         });
     }
 
+    public function profile() {
+        return $this->hasOne(Profile::class, 'account_id');
+    }
+
     public function interests() {
         return $this->belongsToMany(Interest::class, 'user_interest_assoc', 'user_id', 'interest_id');
     }

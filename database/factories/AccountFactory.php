@@ -24,7 +24,7 @@ class AccountFactory extends Factory
 
         $area_code = fake()->randomElement([604, 778]);
 
-        $subscriber_num = fake()->randomNumber(7);
+        $subscriber_num = str_pad((string) fake()->randomNumber(7), 7, "0", STR_PAD_LEFT);
         $phone_number = $area_code.$subscriber_num;
 
         return [
@@ -36,7 +36,6 @@ class AccountFactory extends Factory
             'name_first' => $names[0],
             'name_last' => $names[2],
             'name_middle' => $names[1][0],
-            'age' => fake()->numberBetween(18, 90),
             'remember_token' => Str::random(10),
         ];
     }
