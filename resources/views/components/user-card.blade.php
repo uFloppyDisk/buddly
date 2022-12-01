@@ -1,15 +1,20 @@
-<div class="overflow-hidden my-3 px-3 py-2 rounded shadow">
-    <div class="row align-items-end">
+<div class="my-3 px-3 pt-3 pb-2 rounded shadow">
+    <div class="row align-items-start px-2">
+        <div class="col-auto align-self-center p-0">
+            <div class="img-frame">
+                <img class="img-fluid user-card" src="{{ fake()->imageUrl(200, 100, 'buddly.ca')}}" alt="">
+            </div>
+        </div>
         <div class="col">
             <div class="row align-items-center">
                 <div class="col-auto pe-0">
                     <h5>{{ $user->name_full }}</h5>
                 </div>
-                @if ($user->type == 100)
-                    <div class="col-auto">
+                <div class="col-auto">
+                    @if ($user->type == 100)
                         <span class="badge rounded-pill text-white text-bg-secondary text-truncate">{{ __('Buddly+') }}</span>
-                    </div>
-                @endif
+                    @endif
+                </div>
             </div>
             <div class="row overflow-hidden">
                 <div class="col">
@@ -36,7 +41,7 @@
                 $count = count($interests);
             @endphp
             @if ($count > 0)
-                <div class="row mt-4">
+                <div class="row mt-2">
                     <div class="col"><span class="fst-italic text-muted">Interested in:</span></div>
                 </div>
                 <div class="row">
@@ -45,13 +50,24 @@
                             @break
                         @endif
                         <div class="col-auto mx-1 px-0">
-                            <span class="badge rounded-pill text-bg-primary text-truncate">{{ $interest->title }}</span>
+                            <a href="#" rel="tooltip" data-bs-toggle="tooltip" data-bs-title="{{ $interest->description }}">
+                                <span class="badge rounded-pill text-bg-primary text-white text-truncate">{{ $interest->title }}</span>
+                            </a>
                         </div>
                     @endforeach
 
                     @if ($count > $max)
                         <div class="col-auto mx-1 px-0">
-                            <span class="badge rounded-pill text-bg-light text-truncate">{{ __('+') }} {{ $count - $max }} {{ __('more') }}</span>
+                            <a class="dropdown" data-toggle="dropdown">
+                                <span class="badge rounded-pill text-bg-light text-truncate">{{ __('+') }} {{ $count - $max }} {{ __('more') }}</span>
+                                <ul class="dropdown-menu ps-1 pt-1">
+                                    @foreach ($interests as $index => $interest)
+                                        @if ($index > ($max - 1))
+                                            <li class="m-1"><span class="badge rounded-pill text-bg-primary text-white text-truncate">{{ $interest->title }}</span></li>
+                                        @endif
+                                    @endforeach
+                                </ul>
+                            </a>
                         </div>
                     @endif
                 </div>

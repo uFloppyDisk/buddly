@@ -33,16 +33,40 @@
     $('li.tagit-new input').each(function() {
         $(this).attr("onkeyup", "expand_input(this);");
     });
+
+    $(function () {
+        $("[rel='tooltip']").tooltip();
+    })
 </script>
 
 <style>
     ul.tagit {
         margin-left: 0;
     }
+
     ul.tagit input { 
         -webkit-box-shadow: none;
         -moz-box-shadow: none;
         box-shadow: none;
+    }
+
+    .dropdown:hover .dropdown-menu {
+        display: block;
+        margin-top: 0;
+    }
+
+    .img-frame {
+        width: 100px;
+        height: 100px;
+        vertical-align: middle;
+        text-align: center;
+        display: table-cell;
+    }
+
+    img.user-card {
+        height: 100%;
+
+        object-fit: cover;
     }
 </style>
 
@@ -51,7 +75,7 @@
 @section('content')
 <div class="container-fluid">
     <div class="row flex-nowrap">
-        <div class="col-3">
+        <div class="col-md-3">
             <div class="d-flex flex-column flex-shrink-0 p-3 bg-light">
                 <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
                     <svg class="bi pe-none me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
@@ -72,38 +96,6 @@
                         </div>
                     </div>
                 </div>
-                {{-- <ul class="flex-column mb-auto">
-                    <li class="nav-item">
-                        <a href="#" class="nav-link active" aria-current="page">
-                            <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#home"></use></svg>
-                            Home
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="nav-link link-dark">
-                            <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#speedometer2"></use></svg>
-                            Dashboard
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="nav-link link-dark">
-                            <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#table"></use></svg>
-                            Orders
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="nav-link link-dark">
-                            <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#grid"></use></svg>
-                            Products
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="nav-link link-dark">
-                            <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#people-circle"></use></svg>
-                            Customers
-                        </a>
-                    </li>
-                </ul> --}}
                 {{-- <hr> --}}
                 {{-- <div class="dropdown">
                     <a href="#" class="d-flex align-items-center link-dark text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
@@ -120,11 +112,14 @@
                 </div> --}}
             </div>
         </div>
-        <div class="col-5">
+        <div class="col-6">
             <div class="d-flex flex-column flex-shrink-0 py-3 bg-light">
                 <div class="row">
                     <div class="col">
                         @foreach ($db_users as $user)
+                            @if (is_null($user->email_verified_at))
+                                @continue
+                            @endif
                             @php
                                 $interests = $user->interests;
                             @endphp
