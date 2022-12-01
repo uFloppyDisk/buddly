@@ -19,7 +19,10 @@ Route::get('/', [App\Http\Controllers\SearchController::class, 'index']);
 
 Auth::routes(['verify' => true]);
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::prefix('profile')->group(function () {
+    Route::get('/', [App\Http\Controllers\ProfileController::class, 'index'])->name('profile');
+    Route::get('/edit', [App\Http\Controllers\ProfileController::class, 'edit_profile'])->name('profile.edit');
+});
 
 Route::middleware(['admin'])->group(function () {
     Route::get('admin', [AdminPanelController::class, 'show'])->name('admin');
