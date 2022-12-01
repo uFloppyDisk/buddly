@@ -1,6 +1,5 @@
 import './bootstrap';
 import '../css/app.css';
-import './chart-temp';
 import './jquery-ui.min';
 
 // import 'jquery';
