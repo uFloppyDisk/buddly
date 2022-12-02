@@ -27,6 +27,7 @@ class AccountSeeder extends Seeder
         // ]);
         
         Account::factory()
+            ->hasProfile()
             ->count(20)
             ->create();
 

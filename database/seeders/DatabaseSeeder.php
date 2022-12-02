@@ -33,6 +33,6 @@ class DatabaseSeeder extends Seeder
             MessageSeeder::class,
         ]);
 
-        \App\Models\Profile::factory(15)->create();
+        // \App\Models\Profile::factory(15)->create();
     }
 }

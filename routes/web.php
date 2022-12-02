@@ -19,9 +19,17 @@ Route::get('/', [App\Http\Controllers\SearchController::class, 'index']);
 
 Auth::routes(['verify' => true]);
 
-Route::prefix('profile')->group(function () {
+Route::middleware('auth')->prefix('profile')->group(function () {
     Route::get('/', [App\Http\Controllers\ProfileController::class, 'index'])->name('profile');
-    Route::get('/edit', [App\Http\Controllers\ProfileController::class, 'edit_profile'])->name('profile.edit');
+    Route::get('/user/{profile_id}', [App\Http\Controllers\ProfileController::class, 'show'])->name('profile.show');
+    Route::get('/edit', [App\Http\Controllers\ProfileController::class, 'edit_start'])->name('profile.edit');
+    Route::post('/edit/update', [App\Http\Controllers\ProfileController::class, 'update'])->name('profile.edit.publish');
+});
+
+Route::middleware('auth')->prefix('chat')->group(function () {
+    Route::get('/', [\App\Http\Controllers\ChatController::class, 'index'])->name('chat');
+    Route::get('/{conversation_id}', [\App\Http\Controllers\ChatController::class, 'show'])->name('chat.view');
+    Route::post('/{conversation_id}/new-message', [\App\Http\Controllers\ChatController::class, 'update'])->name('chat.new-message');
 });
 
 Route::middleware(['admin'])->group(function () {
