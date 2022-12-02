@@ -21,7 +21,7 @@ Auth::routes(['verify' => true]);
 
 Route::prefix('profile')->group(function () {
     Route::get('/', [App\Http\Controllers\ProfileController::class, 'index'])->name('profile');
-    Route::get('/edit', [App\Http\Controllers\ProfileController::class, 'edit_profile'])->name('profile.edit');
+    Route::get('/edit', [App\Http\Controllers\ProfileController::class, 'edit_profile_get'])->name('profile.edit');
 });
 
 Route::middleware(['admin'])->group(function () {

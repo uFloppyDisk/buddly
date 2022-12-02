@@ -35,8 +35,8 @@ class ProfileController extends Controller
         return view('profile');
     }
 
-    public function edit_profile()
+    public function edit_profile_get()
     {
-        return view('profile');
+        return view('profile.edit');
     }
 }
