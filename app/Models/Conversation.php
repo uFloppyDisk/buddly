@@ -25,6 +25,14 @@ class Conversation extends Model
         return $this->belongsTo(Account::class, 'participant_id', 'id');
     }
 
+    public function messages() {
+        return $this->hasMany(Message::class, 'conversation_id', 'id')->orderBy('created_at', 'desc');
+    }
+
+    public function messages_asc() {
+        return $this->hasMany(Message::class, 'conversation_id', 'id')->orderBy('created_at', 'asc');
+    }
+
     public function scopeId($query, $id) {
         $query->where('initiator_id', $id)->orWhere('participant_id', $id);
     }

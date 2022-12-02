@@ -88,6 +88,18 @@ class Account extends Authenticatable implements MustVerifyEmail
         return null;
     }
 
+    public function conv_initiator() {
+        return $this->hasMany(Conversation::class, 'initiator_id');
+    }
+
+    public function conv_participant() {
+        return $this->hasMany(Conversation::class, 'participant_id');
+    }
+
+    public function conversations() {
+        return $this->conv_initiator->merge($this->conv_participant);
+    }
+
     public function getNameFullAttribute() {
         return "{$this->name_first} {$this->name_middle} {$this->name_last}";
     }

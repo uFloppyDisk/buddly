@@ -56,7 +56,9 @@
                             @endif
                         @else
                             <li class="nav-item">
-                                <img class="chat" src="{{ Vite::asset('resources/images/comment.png') }}" alt="">
+                                <a href="{{ route('chat') }}">
+                                    <img class="chat" src="{{ Vite::asset('resources/images/comment.png') }}" alt="">
+                                </a>
                             </li>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
