@@ -92,8 +92,8 @@
             @endif
         </div>
         <div class="col-auto">
-            <a href="#">
-                View Profile
+            <a href="{{ route('profile.show', ['profile_id' => $user->id]) }}">
+                {{ __('View Profile') }}
             </a>
         </div>
     </div>

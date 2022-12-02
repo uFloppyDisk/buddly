@@ -19,9 +19,11 @@ Route::get('/', [App\Http\Controllers\SearchController::class, 'index']);
 
 Auth::routes(['verify' => true]);
 
-Route::prefix('profile')->group(function () {
+Route::middleware('auth')->prefix('profile')->group(function () {
     Route::get('/', [App\Http\Controllers\ProfileController::class, 'index'])->name('profile');
-    Route::get('/edit', [App\Http\Controllers\ProfileController::class, 'edit_profile_get'])->name('profile.edit');
+    Route::get('/user/{profile_id}', [App\Http\Controllers\ProfileController::class, 'show'])->name('profile.show');
+    Route::get('/edit', [App\Http\Controllers\ProfileController::class, 'edit_start'])->name('profile.edit');
+    Route::post('/edit/update', [App\Http\Controllers\ProfileController::class, 'update'])->name('profile.edit.publish');
 });
 
 Route::middleware(['admin'])->group(function () {
