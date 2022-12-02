@@ -18,8 +18,19 @@ class Profile extends Model
      */
     protected $attributes = [
         'is_renter' => false,
-    ]; 
+    ];
 
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array<int, string>
+     */
+    protected $fillable = [
+        'account_id',
+        'bio',
+        'birthdate',
+        'gender'
+    ];
 
     /**
      * The attributes that should be cast.

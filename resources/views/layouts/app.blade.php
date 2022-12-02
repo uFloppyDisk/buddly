@@ -68,7 +68,7 @@
                                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                     <li><h1 class="dropdown-header">{{ Auth::user()->name_full }}</h1></li>
                                     <li><hr class="dropdown-divider"></li>
-                                    <li><a class="dropdown-item" href="#">{{ __('Edit Profile') }}</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('profile') }}">{{ __('Profile') }}</a></li>
 
                                     <li>
                                         <a class="dropdown-item" href="{{ route('logout') }}"
