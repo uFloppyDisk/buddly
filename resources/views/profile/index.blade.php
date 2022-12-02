@@ -37,11 +37,15 @@
     <div class="col-md-6 col-lg-7">
         <div class="card">
             <div class="card-body">
-                <div class="row mb-2 align-items-center justify-content-end">
+                <div class="row mb-2 align-items-baseline justify-content-end">
                     {{-- <div class="col-3"></div> --}}
-                    <div class="col ps-3 pe-0 text-start">
+                    <div class="col-auto ps-3 pe-0 text-start">
                         <h4>{{ $user->name_full }}</h4>
-                        {{-- <x-user-demographic :birthdate="$profile->birthdate" :gender="$profile->gender"> --}}
+                    </div>
+                    <div class="col ms-3">
+                        <div class="row">
+                            <x-user-demographic :birthdate="$profile->birthdate" :gender="$profile->gender"/>
+                        </div>
                     </div>
                     @if (Route::currentRouteName() == "profile")
                         <div class="col-auto">

@@ -77,6 +77,6 @@ class ProfileController extends Controller
 
         $profile->save();
 
-        return back();
+        return redirect()->route('profile');
     }
 }

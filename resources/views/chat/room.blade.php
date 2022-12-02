@@ -14,6 +14,7 @@
 @section('content')
 @php
     $profile = $user->profile;
+    $interests = $user->interests;
 
     $initiator = $conv->initiator;
     $participant = $conv->participant;
@@ -43,6 +44,14 @@
                             <x-user-demographic :birthdate="$other->profile->birthdate" :gender="$other->profile->gender"/>
                         </div>
                         <p class="card-text">{{ $other->profile->bio }}</p>
+                    </div>
+                    <div class="card-footer">
+                        <p class="fst-italic">Interested in:</p>
+                        <div class="row ps-2">
+                            @foreach ($interests as $interest)
+                                <x-interest-pill :interest="$interest"/>
+                            @endforeach
+                        </div>
                     </div>
                 </div>
             </div>
