@@ -13,9 +13,6 @@
 
 @section('content')
 @php
-    $profile = $user->profile;
-    $interests = $user->interests;
-
     $initiator = $conv->initiator;
     $participant = $conv->participant;
 
@@ -24,6 +21,9 @@
         $other = $participant;
     };
 
+    $profile = $other->profile;
+    $interests = $other->interests;
+
     $messages = $conv->messages_asc;
 @endphp
 <div class="container-fluid d-flex align-self-stretch">
@@ -31,7 +31,7 @@
         <div class="col-lg-3 d-lg-block d-none">
             <div class="d-flex flex-column flex-shrink-0 p-3 bg-light">
                 <div class="card">
-                    <img src="{{ fake()->imageUrl(1000, 1000, 'buddly.ca')}}" class="card-img-top" alt="...">
+                    <img src="{{ fake()->imageUrl(500, 500, 'buddly.ca')}}" class="card-img-top" alt="...">
                         @if ($other->type == 100)
                             <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-secondary fs-6 shadow">
                                 {{ __('Buddly+') }}
@@ -41,9 +41,9 @@
                     <div class="card-body">
                         <div class="card-title row">
                             <h5 class="col">{{ $other->name_full }}</h5>
-                            <x-user-demographic :birthdate="$other->profile->birthdate" :gender="$other->profile->gender"/>
+                            <x-user-demographic :birthdate="$profile->birthdate" :gender="$profile->gender"/>
                         </div>
-                        <p class="card-text">{{ $other->profile->bio }}</p>
+                        <p class="card-text">{{ $profile->bio }}</p>
                     </div>
                     <div class="card-footer">
                         <p class="fst-italic">Interested in:</p>

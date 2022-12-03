@@ -33,6 +33,9 @@ Route::middleware('auth')->prefix('chat')->group(function () {
     Route::post('/{conversation_id}/message/new', [\App\Http\Controllers\ChatController::class, 'update'])->name('chat.new-message');
 });
 
-Route::middleware(['admin'])->group(function () {
-    Route::get('admin', [AdminPanelController::class, 'show'])->name('admin');
+Route::middleware(['admin'])->prefix('admin')->group(function () {
+    Route::get('/', [AdminPanelController::class, 'show'])->name('admin');
+    Route::get('/customer-overview', function () {
+        return view('admin.customer-overview');
+    })->name('admin.customer-overview');
 });

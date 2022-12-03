@@ -67,6 +67,9 @@
 
                                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                     <li><h1 class="dropdown-header">{{ Auth::user()->name_full }}</h1></li>
+                                    @if (Auth::user()->type == 255)
+                                        <li><a class="dropdown-item" href="{{ route('admin') }}">{{ __('Go to Admin Panel') }}</a></li>
+                                    @endif
                                     <li><hr class="dropdown-divider"></li>
                                     <li><a class="dropdown-item" href="{{ route('profile') }}">{{ __('Profile') }}</a></li>
 

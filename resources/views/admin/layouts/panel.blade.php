@@ -17,36 +17,6 @@
     @vite(['resources/sass/dashboard.scss', 'resources/js/app.js'])
 </head>
 <body>
-    {{-- <header class="navbar navbar-light sticky-top bg-light flex-md-nowrap p-0 shadow">
-        <div class="container d-block">
-            <div class="row navbar">
-                <div class="col-9">
-                    <a class="navbar-brand" href="{{ url('/admin') }}">
-                        {{ config('app.name', 'Laravel') }} - Admin Panel
-                    </a>
-                </div>
-                <div class="col-auto">
-                    <ul class="navbar-nav me-auto">
-                        {{ Auth::user()->email }}
-                    </ul>
-                </div>
-                <div class="col-auto">
-                    <ul class="navbar-nav ms-auto">
-                        <!-- Authentication Links -->
-                        <a class="dropdown-item" href="{{ route('logout') }}"
-                            onclick="event.preventDefault();
-                                document.getElementById('logout-form').submit();">
-                            {{ __('Logout') }}
-                        </a>
-
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                            @csrf
-                        </form>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </header> --}}
     <header class="navbar navbar-light sticky-top bg-light flex-md-nowrap p-0 ps-4 pe-5 shadow">
         <a class="navbar-brand" href="{{ url('/admin') }}">
             {{ config('app.name', 'Laravel') }} - Admin Panel
@@ -54,7 +24,6 @@
         <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        {{-- <input class="form-control form-control-dark w-100 rounded-0 border-0" type="text" placeholder="Search" aria-label="Search" data-dashlane-rid="5c3e6d9fdb85c9d4" data-form-type=""> --}}
         <div class="row navbar-nav">
             <div class="nav-item text-nowrap">
                 <!-- Authentication Links -->
@@ -74,7 +43,7 @@
                 <div class="position-sticky pt-3 sidebar-sticky">
                     <ul class="nav flex-column">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">
+                            <a class="nav-link {{ Route::is('admin') ? 'active' : ''}}" aria-current="page" href="{{ route('admin') }}">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home align-text-bottom" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
                                 Dashboard
                             </a>
@@ -92,7 +61,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">
+                            <a class="nav-link {{ Route::is('admin.customer-overview') ? 'active' : ''}}" href="{{ route('admin.customer-overview') }}">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-users align-text-bottom" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
                                 Customer Management
                             </a>

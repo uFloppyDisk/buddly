@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 class AdminPanelController extends Controller
 {
     public function show() {
-        $recent_new_users = Account::limit(10)->orderBy('created_at')->get();
+        $recent_new_users = Account::limit(10)->orderBy('created_at', 'desc')->get();
 
         return view('admin.home', [
             'db_recent_new_users' => $recent_new_users

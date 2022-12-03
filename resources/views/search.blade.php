@@ -10,15 +10,17 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tag-it/2.0/js/tag-it.js" integrity="sha512-cAoWDoS3Z0g6xaQ+SngQIW6YFBxXvRmfRlmJljQ8BmfnhfNuy+ZD0+bpAU2maZxLbcNMM00giRM59OdG/XsN0A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 <script type="module">
-    $(function(){
-        var sampleTags = ['c++', 'java', 'php', 'coldfusion', 'javascript', 'asp', 'ruby', 'python', 'c', 'scala', 'groovy', 'haskell', 'perl', 'erlang', 'apl', 'cobol', 'go', 'lua'];
+    $(document).ready(function () {
+        $(function(){
+            var sampleTags = ['skating', 'gaming', 'sports', 'hiking', 'food', 'movies'];
 
-        var tags_interests = $("#interests");
-        $('#interests').tagit({
-            placeholderText: "None Specified",
-            availableTags: sampleTags
+            var tags_interests = $("#interests");
+            $('#interests').tagit({
+                placeholderText: "None Specified",
+                availableTags: sampleTags
+            });
         });
-    });
+    })
 </script>
 
 <script defer>
@@ -77,16 +79,16 @@
     <div class="row flex-nowrap">
         <div class="col-md-3">
             <div class="d-flex flex-column flex-shrink-0 p-3 bg-light">
-                <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
+                <div class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
                     <svg class="bi pe-none me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
-                    <span class="fs-4">Search Filters</span>
-                </a>
+                    <span class="fs-4">{{ __('Filters') }}</span>
+                </div>
                 <hr>
                 <div class="container content px-4">
                     <div class="row">
                         <div class="col">
                             <div class="row">
-                                <label class="col ps-2" for="in_interests">Interests</label>
+                                <label class="col ps-2" for="in_interests">{{ __('Interests') }}</label>
                             </div>
                             <div class="row content">
                                 <form>
