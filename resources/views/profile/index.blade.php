@@ -51,6 +51,10 @@
                         <div class="col-auto">
                             <a class="btn btn-primary" href="{{ route('profile.edit') }}" role="button">{{ __('Edit Profile') }}</a>
                         </div>
+                    @else
+                        <div class="col-auto">
+                            <a class="btn btn-primary" href="{{ route('chat.new', ['account_id' => $user->id]) }}" role="button">{{ __('Chat') }}</a>
+                        </div>
                     @endif
                 </div>
                 <div class="row px-3">

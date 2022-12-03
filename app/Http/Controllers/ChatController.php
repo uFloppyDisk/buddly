@@ -38,6 +38,30 @@ class ChatController extends Controller
         ]);
     }
 
+    public function create($account_id) {
+        $user = Auth::user();
+
+        // $conv_exists = Conversation::id($user->id)->where('initiator_id', $account_id)
+        //                 ->orWhere('participant_id', $account_id)->first();
+
+        $conv_exists = Conversation::id($user->id)->id($account_id)->first();
+
+        if (!is_null($conv_exists)) {
+            return redirect()->route('chat.view', $conv_exists->id);
+        }
+
+        $new_conv_id = Conversation::create([
+            'initiator_id' => $user->id,
+            'participant_id' => $account_id
+        ])->id;
+
+        if (!is_null($new_conv_id)) {
+            return redirect()->route('chat.view', $new_conv_id);
+        }
+
+        return redirect()->route('chat');
+    }
+
     public function update(Request $request, $conversation_id) {
         $user = Auth::user();
         $conv = Conversation::id($user->id)->where('id', $conversation_id)->first();

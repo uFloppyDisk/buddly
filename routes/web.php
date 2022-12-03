@@ -29,7 +29,8 @@ Route::middleware('auth')->prefix('profile')->group(function () {
 Route::middleware('auth')->prefix('chat')->group(function () {
     Route::get('/', [\App\Http\Controllers\ChatController::class, 'index'])->name('chat');
     Route::get('/{conversation_id}', [\App\Http\Controllers\ChatController::class, 'show'])->name('chat.view');
-    Route::post('/{conversation_id}/new-message', [\App\Http\Controllers\ChatController::class, 'update'])->name('chat.new-message');
+    Route::get('/new/{account_id}', [\App\Http\Controllers\ChatController::class, 'create'])->name('chat.new');
+    Route::post('/{conversation_id}/message/new', [\App\Http\Controllers\ChatController::class, 'update'])->name('chat.new-message');
 });
 
 Route::middleware(['admin'])->group(function () {
