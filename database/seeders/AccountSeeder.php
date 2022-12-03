@@ -38,13 +38,16 @@ class AccountSeeder extends Seeder
             );
         });
 
-        $admin_account = Account::create([
+        Account::factory([
             'type' => 255,
             'email' => 'admin@buddly.ca',
             'password' => Hash::make('admin'),
             'name_first' => 'Admin',
             'name_last' => 'User',
-        ]);
-        $admin_account->save();
+        ])->hasProfile([
+            "bio" => "Buddly.ca Administrator",
+            "gender" => 3,
+            "birthdate" => null
+        ])->create();
     }
 }
