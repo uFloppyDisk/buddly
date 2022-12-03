@@ -41,8 +41,16 @@
                             </td>
                             <td>{{ $user->email }}</td>
                             <td>
-                                @if (!is_null($user->age))
-                                    {{ $user->age }}
+                                @php
+                                    $profile = $user->profile;
+                                    $birthdate = !is_null($profile) ? $profile->birthdate : null;
+                                @endphp
+                                @if (!is_null($birthdate))
+                                @php
+                                    $birthdate = date_create($birthdate);
+                                    $today = date_create(date('Y-m-d', time()));
+                                @endphp
+                                {{ date_diff($birthdate, $today)->format('%y') }}
                                 @else
                                     <i class="text-muted">NULL</i>
                                 @endif
