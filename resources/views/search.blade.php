@@ -116,7 +116,16 @@
             <div class="d-flex flex-column flex-shrink-0 py-3 bg-light">
                 <div class="row">
                     <div class="col">
+                        @php
+                            $auth = Auth::user();
+                        @endphp
                         @foreach ($db_users as $user)
+                            @if (!is_null($auth))
+                                @if ($user->id == $auth->id)
+                                    @continue
+                                @endif
+                            @endif
+
                             @if (is_null($user->email_verified_at))
                                 @continue
                             @endif

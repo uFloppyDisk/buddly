@@ -32,7 +32,7 @@
             <div class="d-flex flex-column flex-shrink-0 p-3 bg-light">
                 <div class="card">
                     <img src="{{ fake()->imageUrl(1000, 1000, 'buddly.ca')}}" class="card-img-top" alt="...">
-                        @if ($user->type == 100)
+                        @if ($other->type == 100)
                             <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-secondary fs-6 shadow">
                                 {{ __('Buddly+') }}
                             </span>

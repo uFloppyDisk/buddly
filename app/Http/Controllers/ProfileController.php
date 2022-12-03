@@ -67,7 +67,7 @@ class ProfileController extends Controller
                 'gender' => $request->input('in_gender')
             ]);
 
-            return back();
+            return redirect()->route('profile');
         }
 
         $profile->is_renter = $is_renter;
