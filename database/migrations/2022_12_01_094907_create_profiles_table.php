@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('profile', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->uuid('account_id');
+            $table->uuid('account_id')->unique();
             $table->boolean('is_renter');
             $table->text('bio')->nullable();
             $table->integer('gender')->nullable();
