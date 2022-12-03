@@ -25,7 +25,6 @@ return new class extends Migration
             $table->string('name_first')->nullable();
             $table->string('name_last')->nullable();
             $table->string('name_middle')->nullable();
-            $table->integer('age', false, true)->nullable();
             
             $table->rememberToken();
             $table->timestamps();

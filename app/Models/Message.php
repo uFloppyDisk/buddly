@@ -37,12 +37,4 @@ class Message extends Model
     public function scopeConversationID($query, $conv_id) {
         $query->where("conversation_id", $conv_id)->orderBy('created_at');
     }
-
-    // public function getCreatedAtAttribute($date) {
-    //     return Carbon::createFromFormat('Y-m-d H:i:s', $date)->timestamp;
-    // }
-
-    // public function getUpdatedAtAttribute($date) {
-    //     return Carbon::createFromFormat('Y-m-d H:i:s', $date)->timestamp;
-    // }
 }

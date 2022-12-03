@@ -75,6 +75,10 @@ class Account extends Authenticatable implements MustVerifyEmail
         });
     }
 
+    public function profile() {
+        return $this->hasOne(Profile::class, 'account_id');
+    }
+
     public function interests() {
         return $this->belongsToMany(Interest::class, 'user_interest_assoc', 'user_id', 'interest_id');
     }
@@ -82,6 +86,18 @@ class Account extends Authenticatable implements MustVerifyEmail
     public function interest_categories() {
         // TODO: Implement interest category relation
         return null;
+    }
+
+    public function conv_initiator() {
+        return $this->hasMany(Conversation::class, 'initiator_id');
+    }
+
+    public function conv_participant() {
+        return $this->hasMany(Conversation::class, 'participant_id');
+    }
+
+    public function conversations() {
+        return $this->conv_initiator->merge($this->conv_participant);
     }
 
     public function getNameFullAttribute() {
